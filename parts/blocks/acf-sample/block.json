@@ -1,0 +1,17 @@
+{
+  "name": "acf/acf-sample",
+  "title": "ACF Sample",
+  "category": "theme",
+  "icon": "screenoptions",
+  "apiVersion": 2,
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "block-render-template.php"
+  },
+  "supports": {
+    "align": [
+      "full"
+    ],
+    "anchor": true
+  }
+}

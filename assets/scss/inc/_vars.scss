@@ -1,0 +1,23 @@
+// Project variables
+$blue: #2d22b4;
+
+$text-color: #333;
+
+$main-color: $blue;
+$sub-color: $main-color;
+
+$font: 'Open Sans', sans-serif;
+$sub-font: $font;
+$fa: 'Font Awesome 6 Free';
+$fab: 'Font Awesome 6 Brands';
+
+// Font Awesome Vars
+$fa-font-path: "../fonts";
+$fa-font-display: swap;
+
+// Project mixins
+
+
+// Custom fonts
+// Use https://transfonter.org/ service with "Fix vertical metrics" setting
+// to get correct converted web fonts. Use woff2 format. NOT ttf or otf!

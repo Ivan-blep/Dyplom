@@ -1,0 +1,18 @@
+{
+  "name": "acf/acf-advanced",
+  "title": "ACF Advanced",
+  "category": "theme",
+  "icon": "screenoptions",
+  "apiVersion": 2,
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "block-render-template.php"
+  },
+  "supports": {
+    "align": [
+      "full"
+    ],
+    "anchor": true,
+    "fullHeight": true
+  }
+}

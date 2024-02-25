@@ -1,0 +1,16 @@
+{
+  "name": "acf/hero-slider",
+  "title": "Hero Slider",
+  "category": "theme",
+  "icon": "format-gallery",
+  "apiVersion": 2,
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "block-render-template.php"
+  },
+  "supports": {
+    "align": [ "full" ],
+    "anchor": true,
+    "fullHeight": true
+  }
+}

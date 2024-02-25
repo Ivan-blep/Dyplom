@@ -1,0 +1,13 @@
+.sidebar {
+	@include breakpoint(small down) {
+		margin-top: rem-calc(48);
+	}
+}
+
+.widget {
+	margin-bottom: rem-calc(20);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}

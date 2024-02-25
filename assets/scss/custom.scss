@@ -1,0 +1,266 @@
+// Foundation
+@import "inc/foundation-custom";
+
+/* Plugins */
+// Slick
+@import 'plugins/slick.scss';
+// Fancybox
+@import 'plugins/fancybox.v3';
+//@import 'plugins/fancybox.v4'; 
+// Home slider
+@import 'inc/slider';
+// Animation
+@import 'inc/animation';
+
+/* ---------------------------------------
+	Typography / Forms / Inputs / Buttons
+--------------------------------------- */
+
+@import 'typography';
+
+/* ---------------------------------------
+	WooCommerce
+--------------------------------------- */
+
+//@import 'inc/woo';
+
+/* -----------------------------------------
+   WordPress Core Classes
+----------------------------------------- */
+
+@import 'inc/wp-core';
+
+/* -----------------------------------------
+   General fixes
+----------------------------------------- */
+
+html {
+	height: 100%;
+}
+
+body {
+	position: static !important;
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	min-height: 100vh;
+}
+
+main {
+	display: block;
+}
+
+iframe {
+	width: 100%;
+}
+
+*:last-child {
+	margin-bottom: 0;
+}
+
+img, .woocommerce img, .woocommerce-page img {
+	transition: opacity 0.3s ease-in-out;
+
+	&.pre-lazyload, &[data-lazy-src] {
+		opacity: 0;
+	}
+
+	&.lazyloaded {
+		opacity: 1;
+	}
+}
+
+/* ---------------------------------------
+	Foundation tweaks
+--------------------------------------- */
+
+.responsive-embed {
+	display: block;
+}
+
+.grid-container {
+	width: 100%;
+	@include breakpoint($global-width down) {
+		//max-width: 100%;
+	}
+}
+
+/* -----------------------------------------
+    Contact Form
+----------------------------------------- */
+
+/*basic Gravity Form styles and fixes, if you dont need/use this -
+comment or delete styles below*/
+
+@import 'inc/gform';
+
+/* ---------------------------------------
+	Fanbcybox
+--------------------------------------- */
+
+img.fancybox-image {
+	width: 100%;
+	height: 100%;
+}
+
+/* ------------------------------------
+    Content Styles
+------------------------------------- */
+
+.main-content {
+	padding-top: rem-calc(48);
+	padding-bottom: rem-calc(48);
+}
+
+/* Preloader */
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.preloader {
+	position: fixed;
+	z-index: 100000000;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	visibility: visible;
+	opacity: 1;
+	background-color: #fff;
+	color: #222;
+	transition: opacity 0.4s ease, visibility 0.4s ease;
+
+	&--hidden {
+		visibility: hidden;
+		opacity: 0;
+		pointer-events: none;
+	}
+}
+
+.preloader__icon {
+	@include position-center;
+
+	&::before {
+		content: '\f1ce';
+		display: block;
+		font-family: $fa;
+		font-size: rem-calc(40);
+		font-weight: 900;
+		animation: spin 1s ease-in-out infinite;
+	}
+}
+
+/* Search form */
+
+.search-form {
+	position: relative;
+
+	.posts-list & {
+		margin-bottom: rem-calc(40);
+	}
+}
+
+.search-form__input {
+	padding-right: rem-calc(72);
+}
+
+.search-form__submit {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: auto;
+	padding: rem-calc(10 12);
+	cursor: pointer;
+	//font-size: 0; // Uncomment to use icon in search button
+
+	&::after {
+		//content: "\f002"; // Uncomment to use icon in search button
+		font-family: $fa;
+		font-size: rem-calc(20);
+		font-weight: 900;
+	}
+}
+
+/* 404 page */
+
+.not-found {
+	padding-top: rem-calc(100);
+	padding-bottom: rem-calc(100);
+
+	.label {
+		margin-left: rem-calc(4);
+		padding: rem-calc(4 10);
+		background-color: $main-color;
+		color: #fff;
+		text-decoration: none;
+		cursor: pointer;
+
+		&:hover {
+			background-color: darken($main-color, 8);
+			color: #fff;
+		}
+	}
+}
+
+/* ---------------------------------------
+	Repeatable blocks
+--------------------------------------- */
+
+@import "repeatable-blocks";
+
+/* ---------------------------------------
+	Gutenberg default styles
+--------------------------------------- */
+
+@import "inc/gutenberg";
+
+/* ---------------------------------------
+	Gutenberg custom blocks
+--------------------------------------- */
+
+@import "blocks";
+
+/* ---------------------------------------
+	Header
+--------------------------------------- */
+
+@import 'header';
+
+/* ---------------------------------------
+	Sidebar
+--------------------------------------- */
+
+@import 'sidebar';
+
+/* ---------------------------------------
+	Footer
+--------------------------------------- */
+
+@import 'footer';
+
+/*---------------------------------------
+	TMPL: Home page
+---------------------------------------*/
+
+@import 'templates/home';
+
+/* ---------------------------------------
+	Page: Blog
+--------------------------------------- */
+
+@import 'templates/blog';
+
+/* ---------------------------------------
+	TMPL: Default page
+--------------------------------------- */
+
+@import 'templates/default';
+
+/* ---------------------------------------
+	TMPL: Contact page
+--------------------------------------- */
+
+@import 'templates/contact';

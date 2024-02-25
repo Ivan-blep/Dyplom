@@ -1,0 +1,90 @@
+@import './inc/foundation-custom';
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+html {
+	font-size: 0.833334vw;
+}
+
+
+[class*="custom-theme"], [data-type*="acf/"] {
+	box-sizing: border-box;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
+	
+	@include foundation-xy-grid-classes;
+	@include foundation-flex-classes;
+	@include foundation-typography;
+	@include foundation-accordion;
+	@include foundation-tabs;
+	@include foundation-float-classes;
+	
+	@import "plugins/slick";
+	@import "inc/slider";
+	@import "repeatable-blocks";
+
+	.acf-block-preview {
+		@include foundation-forms;
+		@include foundation-button;
+		
+		a {
+			pointer-events: none;
+		}
+	} 
+
+	*:last-child {
+		margin-bottom: 0;
+	}
+}
+
+div.editor-styles-wrapper {
+	width: 100%;
+	max-width: none;
+	padding: rem-calc(15);
+	font-family: $body-font-family;
+	box-sizing: border-box;
+
+	.grid-container {
+		width: 100%;
+	}
+
+	.wp-block-button__link, .wp-block-file .wp-block-file__button {
+		@include button($style: solid);
+		cursor: text;
+
+		// Disabled state
+		&.disabled, &[disabled] {
+			@include button-disabled;
+		}
+	}
+
+	.is-style-outline > .wp-block-button__link:not(.has-text-color) {
+		@include button($style: hollow);
+	}
+
+	.is-style-outline > .wp-block-button__link {
+		border: $button-hollow-border-width solid currentColor;
+	}
+	
+	@import "inc/gform";
+	@import "blocks";
+}
+
+.wp-block {
+	width: 100%;
+	max-width: $global-width;
+	margin-right: auto;
+	margin-left: auto;
+
+	&[data-align="wide"] {
+		max-width: $global-width;
+	}
+
+	&[data-align="full"] {
+		width: auto;
+		max-width: none;
+	}
+}

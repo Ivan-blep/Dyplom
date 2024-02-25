@@ -1,0 +1,116 @@
+/* -----------------------------------------
+   Home page slider
+----------------------------------------- */
+
+.slick-slider:not(.slick-initialized) {
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+
+	.slick-slide:first-child {
+		display: block;
+	}
+}
+
+// Smooth transition between last and first slide
+.slick-slide {
+	transition: transform .3s ease-in-out;
+
+	&.slick-center,
+	&[aria-hidden="true"]:not([tabindex="-1"]) + .slick-cloned[aria-hidden="true"] {
+		// Active state styles
+	}
+}
+
+#home-slider {
+
+}
+
+.home-slide {
+	width: 100%;
+}
+
+.home-slide__inner {
+	height: 100%;
+}
+
+.home-slide__caption {
+	position: relative;
+	z-index: 3;
+	min-height: rem-calc(700); /*define the height of slide*/
+
+	@include breakpoint(medium down) {
+		min-height: rem-calc(400);
+	}
+	
+	.full-height & {
+		min-height: 100vh; 
+	}
+}
+
+.video-holder {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.video-holder__media {
+	z-index: 2;
+	pointer-events: none;
+	@include position-center;
+}
+
+.slick-arrow {
+	/* Slick arrows global styles */
+	&::before {
+
+	}
+}
+
+.slick-prev {
+	left: rem-calc(16);
+
+	&::before {
+
+	}
+}
+
+.slick-next {
+	right: rem-calc(16);
+
+	&::before {
+
+	}
+}
+
+.slick-dots {
+	/* Slick dots global styles */
+	display: flex;
+	justify-content: center;
+
+	li {
+		&:only-child {
+			display: none;
+		}
+
+		button {
+			&::before {
+				border: 2px solid $main-color;
+				background-color: transparent;
+			}
+		}
+
+		&.slick-active {
+			button {
+				&::before {
+					background-color: $main-color;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,927 @@
+$fields-x-gap: var(--field-x-gap);
+$fields-y-gap: var(--field-y-gap);
+
+/* ---------------------------------------
+	Gravity Forms v2.5 styles
+--------------------------------------- */
+.gravity-theme {
+	--field-y-gap: #{rem-calc(20)};
+	--field-x-gap: #{rem-calc(30)};
+
+	@include breakpoint(medium down) {
+		--field-x-gap: 3%;
+		--field-y-gap: 10px;
+	}
+
+	.gform_fields {
+		display: -ms-grid;
+		display: grid;
+		width: 100%;
+		//-ms-grid-columns: (1fr 32px)[12];
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: repeat(auto-fill, auto);
+		grid-column-gap: $fields-x-gap;
+		grid-row-gap: $fields-y-gap;
+
+		&::before, &::after {
+			content: none;
+			display: none;
+		}
+	}
+
+	.gfield {
+		margin-bottom: 0;
+		grid-column: 1/-1;
+	}
+
+	@include breakpoint(medium) {
+		.gfield.gfield--width-full {
+			-ms-grid-column-span: 12;
+			grid-column: span 12
+		}
+
+		.gfield.gfield--width-eleven-twelfths {
+			-ms-grid-column-span: 11;
+			grid-column: span 11
+		}
+
+		.gfield.gfield--width-five-sixths {
+			-ms-grid-column-span: 10;
+			grid-column: span 10
+		}
+
+		.gfield.gfield--width-three-quarter {
+			-ms-grid-column-span: 9;
+			grid-column: span 9
+		}
+
+		.gfield.gfield--width-two-thirds {
+			-ms-grid-column-span: 8;
+			grid-column: span 8
+		}
+
+		.gfield.gfield--width-seven-twelfths {
+			-ms-grid-column-span: 7;
+			grid-column: span 7
+		}
+
+		.gfield.gfield--width-half {
+			-ms-grid-column-span: 6;
+			grid-column: span 6
+		}
+
+		.gfield.gfield--width-five-twelfths {
+			-ms-grid-column-span: 5;
+			grid-column: span 5
+		}
+
+		.gfield.gfield--width-third {
+			-ms-grid-column-span: 4;
+			grid-column: span 4
+		}
+
+		.gfield.gfield--width-quarter {
+			-ms-grid-column-span: 3;
+			grid-column: span 3
+		}
+
+		.gfield.gfield--width-one-sixth {
+			-ms-grid-column-span: 2;
+			grid-column: span 2
+		}
+
+		.gfield.gfield--width-one-twelfth {
+			-ms-grid-column-span: 1;
+			grid-column: span 1
+		}
+	}
+
+	.gfield_list_group, .gfield_list_header {
+		display: flex;
+		flex-flow: row wrap;
+		margin-right: calc(#{$fields-x-gap} / -2);
+		margin-left: calc(#{$fields-x-gap} / -2);
+	}
+
+	.gfield_list_group {
+		margin-bottom: $fields-y-gap;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.gfield_header_item, .gfield_list_group_item {
+		flex-grow: 1;
+		width: 0;
+		padding-right: calc(#{$fields-x-gap} / 2);
+		padding-left: calc(#{$fields-x-gap} / 2);
+	}
+
+	.gfield_header_item:last-child, .gfield_list_icons {
+		display: flex;
+		align-items: center;
+		flex: none;
+		justify-content: center;
+		width: rem-calc(52);
+		padding-right: calc(#{$fields-x-gap} / 2);
+	}
+
+	.gfield_list_icons button {
+		opacity: .5;
+		width: rem-calc(16);
+		height: rem-calc(16);
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		background-image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-444 448 256 256"><path d="M-316 448c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128S-245.3 448-316 448zM-316 672c-53 0-96-43-96-96s43-96 96-96 96 43 96 96S-263 672-316 672z"/><polygon points="-332 512 -332 560 -380 560 -380 592 -332 592 -332 640 -300 640 -300 592 -252 592 -252 560 -300 560 -300 512 "/></svg>');
+		font-size: 0;
+		transition: opacity .5s ease-out;
+
+
+		&::before, &::after {
+			content: none;
+			display: none;
+		}
+
+		&.delete_list_item {
+			margin-left: rem-calc(4);
+			background-image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-139 51 512 512"><path d="M117 51c-141.4 0-256 114.6-256 256 0 141.4 114.6 256 256 256 141.4 0 256-114.6 256-256C373 165.6 258.4 51 117 51zM117 499C11 499-75 413-75 307s86-192 192-192c106 0 192 86 192 192S223 499 117 499zM-11 339h256v-64H-11V339z"/></svg>');
+		}
+	}
+}
+
+/* ---------------------------------------
+	General GF styles
+--------------------------------------- */
+
+.gform_heading {
+	margin-bottom: rem-calc(12);
+}
+
+.gform_description {
+	&:empty {
+		display: none;
+	}
+}
+
+.gform_wrapper {
+
+  .select2 {
+		width: 100% !important;
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	.clear-multi {
+		display: flex;
+	}
+
+	.gfield_time_ampm,
+	.gfield_time_minute,
+	.gfield_time_hour {
+		flex: 1 0 calc(32% - #{$fields-x-gap});
+		text-align: center;
+    margin-left: calc(#{$fields-x-gap} / 2);
+    margin-right: calc(#{$fields-x-gap} / 2);
+
+		input, select, .select2-selection {
+      width: 100% !important;
+      padding-left: rem-calc(8);
+      padding-right: rem-calc(8);
+			//width: rem-calc(80);
+		}
+	}
+
+	.hour_minute_colon {
+    flex: 0 0 4%;
+    text-align: center;
+	}
+
+	.gfield_time_hour {
+		display: flex;
+		align-items: center;
+		flex-flow: row wrap;
+	}
+}
+
+.gform_description {
+	display: block;
+}
+
+.gform_fields {
+	margin: 0;
+
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+.gfield {
+	position: relative;
+	list-style: none;
+}
+
+.gfield_label, .ginput_complex label {
+
+}
+
+// Comment `.hidden_label {`and `}` parent class selector to hide all fields label
+.hidden_label {
+	.gfield_label {
+		@extend %css-clip;
+	}
+}
+
+.gform_hidden {
+	display: none;
+}
+
+.ginput_complex {
+	display: flex;
+	align-items: center;
+	flex-flow: row wrap;
+
+	> span {
+		display: block;
+		flex-basis: 100%;
+
+		&:not(:last-child) {
+			@include breakpoint(small down) {
+				margin-bottom: $fields-y-gap;;
+			}
+		}
+	}
+
+	@include breakpoint(medium) {
+		margin-right: calc(#{$fields-x-gap} / -2);
+		margin-left: calc(#{$fields-x-gap} / -2);
+
+		> span {
+			display: block;
+			flex: 1 1 0;
+			width: auto;
+			margin-right: calc(#{$fields-x-gap} / 2);;
+			margin-left: calc(#{$fields-x-gap} / 2);;
+
+			&.ginput_full {
+				width: calc(100% - #{$fields-x-gap});
+
+				> span {
+					display: block;
+					float: left;
+					width: calc(50% - #{$fields-x-gap});
+				}
+			}
+		}
+	}
+}
+
+.ginput_container_address {
+	@include breakpoint(medium) {
+		> span {
+			flex: 0 0 auto;
+			width: calc(50% - #{$fields-x-gap});
+		}
+	}
+
+	span:not(.ginput_full):not(:last-of-type):not(:nth-last-of-type(2)),
+	.ginput_full:not(:last-of-type) {
+		margin-bottom: $fields-y-gap;
+	}
+}
+
+.ginput_container ul {
+	margin-left: 0;
+}
+
+.gfield_contains_required .ginput_container_phone {
+	.validation_message {
+		@extend %css-clip;
+	}
+}
+
+.gfield_error {
+	input, textarea, select, .select2-selection {
+		border-color: #ec7a7a;
+	}
+}
+
+.gfield_description {
+	margin-top: $fields-y-gap;;
+}
+
+.gform_confirmation_message {
+	margin-bottom: rem-calc(16);
+}
+
+.gform_footer {
+	position: relative;
+	margin-top: $fields-y-gap;
+	text-align: right; /*aligning of submit button*/
+
+	.button {
+
+	}
+}
+
+.gform_ajax_spinner {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 100%;
+	margin: auto;
+	margin-left: 3px;
+}
+
+.validation_error, .gform_validation_errors {
+	width: 100%;
+	margin-bottom: rem-calc(16);
+	padding: rem-calc(4);
+	border: 1px solid #ec7a7a;
+	background-color: #f7e4e1;
+	color: $text-color;
+	font-size: rem-calc(16);
+	text-align: left;
+
+	.gform_submission_error {
+		color: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+	}
+}
+
+.validation_message {
+	position: absolute;
+	z-index: 3;
+	top: calc(100% + #{rem-calc(7)});
+	left: rem-calc(16);
+	display: inline-block;
+	margin: 0;
+	padding: rem-calc(3 6);
+	border-radius: 2px;
+	background-color: #f7e4e1;
+	color: #333;
+	font-size: rem-calc(12);
+	font-style: normal;
+	letter-spacing: normal;
+	text-transform: none;
+	box-shadow: 1px 1px 3px rgba(#000, 0.3);
+
+	&::before {
+		content: 'Error:';
+		display: inline-block;
+		margin-right: 0.25em;
+		font-weight: 700;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 100%;
+		left: rem-calc(20);
+		width: rem-calc(14);
+		height: rem-calc(7);
+		border-width: 0 rem-calc(7) rem-calc(7) rem-calc(7);
+		border-style: solid;
+		border-color: transparent transparent #f7e4e1 transparent;
+	}
+}
+
+.ginput_container_fileupload {
+	.validation_message:empty {
+		display: none;
+	}
+}
+
+// Datepicker styles
+
+input.datepicker_with_icon {
+	display: inline-block;
+	width: calc(100% - #{rem-calc(24)});
+	margin-right: rem-calc(4);
+	vertical-align: middle;
+}
+
+.ui-datepicker {
+	position: absolute;
+	z-index: 9999 !important;
+	width: rem-calc(208);
+	height: auto;
+	margin: rem-calc(4) auto 0;
+	font-size: rem-calc(12);
+	box-shadow: 0 0 rem-calc(10) 0 rgba(0, 0, 0, 0.5);
+
+	a {
+		text-decoration: none;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	thead {
+		border-bottom: 1px solid #bbb;
+		background: #f7f7f7;
+		color: $dark-gray;
+
+		th {
+			padding: rem-calc(3);
+			border: 1px solid #ddd;
+			text-align: center;
+		}
+	}
+
+	tbody {
+		border: none;
+
+		td {
+			width: rem-calc(32);
+			padding: 0;
+			border: 1px solid #bbb;
+			background-color: #fff;
+
+			span, a {
+				display: block;
+				//width: 30px;
+				height: rem-calc(29);
+				color: #666;
+				font-weight: 700;
+				line-height: rem-calc(30);
+				text-align: center;
+			}
+		}
+
+		th {
+			padding: rem-calc(4 0);
+			color: #666;
+			font-size: rem-calc(12);
+			text-transform: uppercase;
+			text-align: center;
+		}
+	}
+
+	select.ui-datepicker-month,
+	select.ui-datepicker-year {
+		height: rem-calc(28);
+		margin: 0 2.5%;
+		padding: rem-calc(4 20 4 4);
+		border: none;
+		font-size: rem-calc(12);
+		line-height: rem-calc(20);
+	}
+}
+
+.ui-datepicker-header {
+	position: relative;
+	padding: rem-calc(4 0);
+	border: none;
+	background-color: #666; /* set the header background color */
+	color: #fff;
+	font-weight: 700;
+
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+	position: absolute;
+	top: 50%;
+	padding: rem-calc(10);
+	color: #fff;
+	font-size: 0;
+	line-height: 1.4;
+	transform: translateY(-50%);
+
+	&:hover, &:focus {
+		color: #fff;
+	}
+
+	&::before {
+		content: '';
+		font-family: $fa;
+		font-size: rem-calc(12);
+		font-weight: 900;
+	}
+}
+
+.ui-datepicker-next {
+	right: 0;
+
+	&::before {
+		content: '\f054';
+	}
+}
+
+.ui-datepicker-prev {
+	left: 0;
+
+	&::before {
+		content: '\f053';
+	}
+}
+
+.ui-datepicker-title {
+	display: flex;
+	justify-content: center;
+	padding-right: rem-calc(32);
+	padding-left: rem-calc(32);
+
+}
+
+.ui-datepicker-calendar {
+	margin: 0 0 0 0 !important;
+
+	.ui-state-default {
+		background: #ededed;
+	}
+
+	.ui-state-hover {
+		background: #fff;
+	}
+
+	.ui-state-active {
+		position: relative;
+		width: rem-calc(35);
+		height: rem-calc(31);
+		margin: -1px;
+		border: 1px solid #c19163; /* set the active date border color */
+		background: #fff2aa; /* set the active date background color */
+
+	}
+}
+
+.ui-datepicker-unselectable {
+	.ui-state-default {
+		background: #f4f4f4;
+		color: #b4b3b3;
+	}
+
+	&.ui-state-disabled {
+		.ui-state-default {
+			background-color: #d7d7d7;
+			color: #b4b3b3;
+		}
+
+	}
+}
+
+
+/* ---------------------------------------
+	Authorize credit card field
+--------------------------------------- */
+
+.ginput_container_creditcard {
+	.ginput_cardinfo_left,
+	.ginput_cardinfo_right {
+		display: block;
+	}
+
+	@include breakpoint(medium) {
+		.ginput_cardinfo_left {
+			margin-right: calc(#{$fields-x-gap} / 2);
+		}
+
+		.ginput_cardinfo_right {
+			margin-left: calc(#{$fields-x-gap} / 2);
+		}
+
+		select.ginput_card_expiration {
+			display: inline-block;
+			width: 47% !important;
+		}
+	}
+
+	@include breakpoint(small down) {
+		select.ginput_card_expiration_month {
+			margin-bottom: $fields-y-gap;
+		}
+		.ginput_cardinfo_left,
+		.ginput_cardinfo_right {
+			margin-top: $fields-y-gap;
+			margin-bottom: $fields-y-gap;
+		}
+	}
+
+	.ginput_card_expiration_container {
+		display: block;
+		width: 100%;
+	}
+
+
+	.ginput_cardinfo_right input.ginput_card_security_code {
+		position: relative;
+		display: inline-block;
+		max-width: 50% !important;
+	}
+}
+
+.gform_card_icon_container {
+	height: rem-calc(32);
+	margin: rem-calc(8 0 6);
+}
+
+div.gform_card_icon {
+	float: left;
+	width: rem-calc(36);
+	height: rem-calc(32);
+	margin-right: rem-calc(4);
+	background-image: url(../images/gf-creditcard-icons.png);
+	background-repeat: no-repeat;
+	text-indent: -9000px;
+}
+
+.gform_card_icon_container.gform_card_icon_style1 {
+	div.gform_card_icon {
+		&.gform_card_icon_visa {
+			background-position: 0 0
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_visa {
+			background-position: 0 -32px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_visa {
+			background-position: 0 -64px
+		}
+
+		&.gform_card_icon_mastercard {
+			background-position: -36px 0
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_mastercard {
+			background-position: -36px -32px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_mastercard {
+			background-position: -36px -64px
+		}
+
+		&.gform_card_icon_amex {
+			background-position: -72px 0
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_amex {
+			background-position: -72px -32px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_amex {
+			background-position: -72px -64px
+		}
+
+		&.gform_card_icon_discover {
+			background-position: -108px 0
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_discover {
+			background-position: -108px -32px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_discover {
+			background-position: -108px -64px
+		}
+
+		&.gform_card_icon_maestro {
+			background-position: -144px 0
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_maestro {
+			background-position: -144px -32px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_maestro {
+			background-position: -144px -64px
+		}
+
+		&.gform_card_icon_jcb {
+			background-position: -180px 0
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_jcb {
+			background-position: -180px -32px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_jcb {
+			background-position: -180px -64px
+		}
+	}
+
+
+}
+
+.gform_card_icon_container.gform_card_icon_style2 {
+	div.gform_card_icon {
+		&.gform_card_icon_visa {
+			background-position: 0 -192px
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_visa {
+			background-position: 0 -224px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_visa {
+			background-position: 0 -256px
+		}
+
+		&.gform_card_icon_mastercard {
+			background-position: -36px -192px
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_mastercard {
+			background-position: -36px -224px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_mastercard {
+			background-position: -36px -256px
+		}
+
+		&.gform_card_icon_amex {
+			background-position: -72px -192px
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_amex {
+			background-position: -72px -224px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_amex {
+			background-position: -72px -256px
+		}
+
+		&.gform_card_icon_discover {
+			background-position: -108px -192px
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_discover {
+			background-position: -108px -224px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_discover {
+			background-position: -108px -256px
+		}
+
+		&.gform_card_icon_maestro {
+			background-position: -144px -192px
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_maestro {
+			background-position: -144px -224px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_maestro {
+			background-position: -144px -256px
+		}
+
+		&.gform_card_icon_jcb {
+			background-position: -180px -192px
+		}
+
+		&.gform_card_icon_selected.gform_card_icon_jcb {
+			background-position: -180px -224px
+		}
+
+		&.gform_card_icon_inactive.gform_card_icon_jcb {
+			background-position: -180px -256px
+		}
+	}
+}
+
+
+.ginput_complex .ginput_cardinfo_right {
+	min-width: rem-calc(84) !important;
+}
+
+
+.ginput_complex select.ginput_card_expiration.ginput_card_expiration_month {
+	margin-right: rem-calc(4);
+}
+
+
+.ginput_complex .ginput_cardinfo_right span.ginput_card_security_code_icon {
+	position: relative;
+	top: -2px;
+	left: 6px;
+	display: -moz-inline-stack;
+	display: inline-block;
+	width: rem-calc(32);
+	height: rem-calc(23);
+	background-image: url(../images/gf-creditcard-icons.png);
+	background-repeat: no-repeat;
+	background-position: 0 -128px;
+
+}
+
+div.gfield_creditcard_warning_message {
+	color: red;
+	font-weight: 700;
+	//display: none !important
+}
+
+.gform_validation_container,
+.gform_wrapper .gform_validation_container,
+body .gform_wrapper li.gform_validation_container,
+body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
+	position: absolute !important;
+	left: -9000px;
+	display: none !important;
+}
+
+%css-clip {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	word-wrap: normal !important;
+	clip-path: inset(50%);
+}
+
+.css-clip {
+	@extend %css-clip;
+}
+
+.gform_wrapper {
+	.screen-reader-text,
+	label.hidden_sub_label {
+		@extend %css-clip;
+	}
+
+	.gf_invisible,
+	.gfield_visibility_hidden {
+		position: absolute;
+		left: -9999px;
+		visibility: hidden;
+	}
+}
+
+/* ---------------------------------------
+	Inline form
+--------------------------------------- */
+
+.inline-form_wrapper {
+	display: flex;
+	flex-flow: row wrap;
+
+	.gform_heading {
+		flex: 1;
+	}
+}
+
+.inline-form {
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+	
+	@include breakpoint(500 down) {
+		flex-flow: row wrap;
+	}
+
+
+	.gform_body {
+		flex-grow: 1;
+		
+		@include breakpoint(500 down) {
+			flex-basis: 100%;
+		}
+	}
+
+	.gform_footer {
+		margin: rem-calc(0 0 0 10);
+
+		@include breakpoint(500 down) {
+			flex-basis: 100%;
+			
+			.button {
+				width: 100%;
+			}
+		}
+
+		.button {
+			min-width: 0;
+			padding-top: #{get-side($input-padding,top)};
+			padding-bottom: #{get-side($input-padding,bottom)};
+			line-height: $input-line-height;
+		}
+	}
+
+	.gform_fields {
+		&::before, &::after {
+			content: none;
+			display: none;
+		}
+
+		grid-column-gap: 2%;
+	}
+}

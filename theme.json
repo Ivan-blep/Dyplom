@@ -1,0 +1,66 @@
+{
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "1170px"
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "units": ["rem" ]
+    },
+    "typography": {
+      "fontSizes": [
+        {
+          "slug": "small",
+          "size": "0.8rem",
+          "name": "Small"
+        },
+        {
+          "slug": "medium",
+          "size": "1.2rem",
+          "name": "Medium"
+        },
+        {
+          "slug": "large",
+          "size": "1.5rem",
+          "name": "Large"
+        },
+        {
+          "slug": "h-1",
+          "size": "2.5rem",
+          "name": "H1"
+        },
+        {
+          "slug": "h-2",
+          "size": "2.25rem",
+          "name": "H2"
+        },
+        {
+          "slug": "h-3",
+          "size": "2rem",
+          "name": "H3"
+        },
+        {
+          "slug": "h-4",
+          "size": "1.75rem",
+          "name": "H4"
+        },
+        {
+          "slug": "h-5",
+          "size": "1.5rem",
+          "name": "H5"
+        },
+        {
+          "slug": "h-6",
+          "size": "1.25rem",
+          "name": "H6"
+        }
+      ]
+    },
+    "color": {
+      "defaultPalette": false
+    }
+  }
+}

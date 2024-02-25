@@ -1,0 +1,43 @@
+/* ---------------------------------------
+	Blog page
+--------------------------------------- */
+
+.preview {
+	margin-bottom: rem-calc(20);
+	padding-bottom: rem-calc(20);
+	border-bottom: 1px solid $light-gray;
+}
+
+.preview__meta {
+	margin-top: rem-calc(20);
+	margin-bottom: 0;
+	color: $dark-gray;
+	font-size: rem-calc(14);
+}
+
+.preview__thumb {
+	@include breakpoint(small down) {
+		margin-bottom: rem-calc(20);
+	}
+}
+
+/* ---------------------------------------
+	Post / Page inner view
+--------------------------------------- */
+
+.entry__share {
+	margin-bottom: rem-calc(20);
+}
+
+.entry__thumb {
+	margin-bottom: rem-calc(20);
+}
+
+.entry__meta {
+	color: $dark-gray;
+	font-size: rem-calc(14);
+}
+
+.entry__cat {
+	margin-top: rem-calc(20);
+}

@@ -1,0 +1,250 @@
+.header {
+	padding-top: rem-calc(10);
+	padding-bottom: rem-calc(10);
+}
+
+.logo {
+	h1 {
+		font-size: 0;
+	}
+
+	a {
+		display: inline-block;
+	}
+
+	img {
+		width: rem-calc(160);
+		height: auto;
+		object-fit: contain;
+	}
+	
+	@include breakpoint(small down) {
+		max-width: 50%;
+	}
+}
+
+@include breakpoint(small down) {
+	/* TOP BAR Mobile STYLING */
+
+	.header {
+		padding-bottom: 0;
+	}
+
+	.header__logo-box {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-right: rem-calc(15);
+		padding-bottom: rem-calc(10);
+		padding-left: rem-calc(15);
+	}
+
+	.menu-grid-container {
+		padding-right: 0;
+		padding-left: 0;
+
+		.grid-margin-x {
+			margin-right: 0;
+			margin-left: 0;
+
+			.cell {
+				width: 100%;
+				margin-right: 0;
+				margin-left: 0;
+			}
+		}
+	}
+
+	.title-bar {
+		line-height: rem-calc(45);
+
+		.menu-icon {
+			padding: 0;
+			border: none;
+			background-color: transparent;
+			-webkit-tap-highlight-color: transparent !important;
+
+			@include menu-icon($main-color, $main-color, rem-calc(30), rem-calc(24), rem-calc(3)); 
+		}
+
+	}
+
+	.top-bar {
+		display: none;
+		background: $main-color; /* menu list background color */
+	}
+
+	.header-menu {
+		background: transparent;
+
+		li {
+			> a {
+				background: $main-color; /* menu item background color */
+				color: #fff; /* menu item text color */
+				line-height: rem-calc(45);
+
+				&:focus {
+					&, & + .submenu-toggle {
+						background: darken($main-color, 5); /* menu item background color on hover */
+					}
+				}
+				&.button {
+					padding: $button-padding;
+					display: inline-block;
+				}
+			}
+
+			&.current-menu-item, &.current_page_ancestor, &.current_page_parent {
+				> a, .submenu-toggle {
+					background: lighten($main-color, 5); /* current/parent menu item background color */
+				}
+			}
+
+			&[aria-expanded='true'] {
+				> a, .submenu-toggle {
+					background: darken($main-color, 3); /* menu item background color on open dropdown */
+				}
+			}
+			
+			&.has-button {
+				padding-top: rem-calc(4);
+				padding-bottom: rem-calc(4);
+			}
+		}
+
+		.submenu-toggle {
+			padding: 0;
+		}
+
+		.submenu {
+			a {
+				padding-left: #{get-side($accordionmenu-padding, 'left') * 1.65};
+			}
+
+			.submenu {
+				a {
+					padding-left: #{get-side($accordionmenu-padding, 'left') * 2.3};
+				}
+			}
+		}
+	}
+}
+
+@include breakpoint(medium) {
+	/* TOP BAR STYLING */
+
+	.header-menu.menu {
+		/* Align menu items to the right */
+		align-items: center;
+		justify-content: flex-end;
+
+		/* Align menu items to the center */
+		// justify-content: center;
+
+		> li {
+			> a {
+				/* Style for first level menu links */
+
+			}
+		}
+
+		li {
+			> a {
+				/* Regular menu item style */
+				color: $main-color;
+				line-height: 2;
+
+				&:hover, &:focus {
+					/* menu item style on hover */
+					background: $main-color;
+					color: invert($main-color);
+				}
+
+				&.button {
+					padding: $button-padding;
+					color: $button-color;
+					line-height: 1;
+				}
+			}
+
+			&.current-menu-item, &.current_page_ancestor, &.current_page_parent {
+				> a {
+					/* Style of Current page and Ancestor page */
+					background: $main-color;
+					color: invert($main-color);
+				}
+			}
+
+			&.has-dropdown {
+				> a {
+					/* Style of item with dropdown */
+				}
+			}
+
+			&.is-active > a {
+				/* Parent link style on dropdown hover */
+				background: invert($main-color);
+				color: $main-color;
+			}
+		}
+
+		/* Dropdown item styling */
+
+		.submenu {
+			z-index: 11;
+			display: none;
+
+			&.js-dropdown-active {
+				display: block;
+			}
+
+			li {
+				> a {
+					/* Regular link in dropdown */
+					background: invert($main-color);
+					color: $main-color;
+					line-height: 1.5;
+
+					&:hover {
+						/* Dropdown link on hover */
+						background: lighten($main-color, 10);
+						color: #fff;
+					}
+				}
+
+				&.current-menu-item, &.current_page_ancestor, &.current_page_parent {
+					> a {
+						background: lighten($main-color, 10);
+						color: #fff;
+					}
+				}
+			}
+
+			.submenu {
+				/* Styles for 2nd level dropdown menu */
+			}
+		}
+	}
+}
+
+@include breakpoint(medium only) {
+	.header-menu.menu {
+		> li {
+			> a {
+				/* First level menu links styles to fix responsive lack of space */
+
+			}
+		}
+	}
+}
+
+@include breakpoint(large only) {
+	.header-menu.menu {
+		> li {
+			> a {
+				/* First level menu links styles to fix responsive lack of space */
+
+			}
+		}
+	}
+}
