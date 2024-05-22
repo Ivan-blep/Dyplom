@@ -331,27 +331,24 @@ class CreateLazyImg {
 				$sources = array_unique( $sources, SORT_REGULAR );
 
 				$lazy_sources = 0;
-
 				foreach ( $sources as $source ) {
 					$lazyload_srcset = preg_replace( '/([\s"\'])src/i', '\1data-lazy-src', $source[0] );
 					$html            = str_replace( $source[0], $lazyload_srcset, $html );
+
 
 					unset( $lazyload_srcset );
 					$lazy_sources++;
 				}
 			}
+			if ( preg_match( '@\ssrc\s*=\s*(\'|")(?<src>.*)\1@iUs', $video['atts'], $atts ) ) {
+				$video['src'] = trim( $atts['src'] );
+				$placeholder_atts = preg_replace( '@\ssrc\s*=\s*(\'|")(?<src>.*)\1@iUs', ' src=$1$1', $video['atts'] );
+				$video_lazyload = str_replace( $video['atts'], $placeholder_atts . ' data-lazy-src="' . $video['src'] . '"', $video[0] );
 
-			if ( ! preg_match( '@\ssrc\s*=\s*(\'|")(?<src>.*)\1@iUs', $video['atts'], $atts ) ) {
-				return false;
+				$html            = str_replace( $video[0], $video_lazyload, $html );
+
+				unset( $video_lazyload );
 			}
-
-			$video['src'] = trim( $atts['src'] );
-			$placeholder_atts = preg_replace( '@\ssrc\s*=\s*(\'|")(?<src>.*)\1@iUs', ' src=$1$1', $video['atts'] );
-			$video_lazyload = str_replace( $video['atts'], $placeholder_atts . ' data-lazy-src="' . $video['src'] . '"', $video[0] );
-
-			$html            = str_replace( $video[0], $video_lazyload, $html );
-
-			unset( $video_lazyload );
 		}
 
 		return $html;
@@ -455,6 +452,7 @@ class CreateLazyImg {
 			'avia-bg-style-fixed',
 			'data-skip-lazy',
 			'skip-lazy',
+			'wp-video-shortcode',
 		);
 	}
 

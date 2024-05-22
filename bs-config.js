@@ -1,6 +1,6 @@
 const urlapi = require('url');
-const siteUrl = '%SITE_URL%', // example `http://site-url.com/`
-	themeName = '%THEME_NAME%'; // example `project-name`. Theme name should not have spaces!!!
+const siteUrl = 'https://testtheme.loc/', // example `http://site-url.com/`
+	themeName = 'fxy_elementor'; // example `project-name`. Theme name should not have spaces!!!
 const URL = urlapi.parse(siteUrl);
 
 module.exports = {
@@ -11,15 +11,9 @@ module.exports = {
 
 	rewriteRules: [
 		{
-			match: new RegExp( URL.path.substring(1) + "wp-content/themes/" + themeName + "/assets/css",'g' ),
+			match: new RegExp( URL.path.substring(1) + "wp-content/themes/" + themeName + "/assets",'g' ),
 			fn: function () {
-				return "assets/css"
-			}
-		},
-		{
-			match: new RegExp( URL.path.substring(1) + "wp-content/themes/" + themeName + "/assets/js",'g' ),
-			fn: function () {
-				return "assets/js"
+				return "assets"
 			}
 		},
 		{

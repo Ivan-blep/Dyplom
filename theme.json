@@ -60,7 +60,9 @@
       ]
     },
     "color": {
-      "defaultPalette": false
+      "defaultPalette": false,
+      "custom": true,
+      "defaultGradients": false
     }
   }
 }

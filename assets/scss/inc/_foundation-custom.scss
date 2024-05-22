@@ -28,7 +28,7 @@ $white: #fff !default;
 
 // Grid
 
-$global-width: rem-calc(1200); // grid container max width
+$global-width: rem-calc(1550); // grid container max width
 $grid-margin-gutters: (
 	small: 32px,
 	//large: 60px,
@@ -43,23 +43,23 @@ $dropdownmenu-submenu-padding: rem-calc(5 15); // Submenu menu item link padding
 // Button
 
 $button-font-family: inherit; // Button font family
-$button-padding: rem-calc(10 15); // Button padding
-$button-background: $primary-color; // Button background
-$button-background-hover: scale-color($button-background, $lightness: -15%); // Button background on hover
-$button-color: $white; // Button text color
+$button-padding: rem-calc(15 30); // Button padding
+$button-background: $green; // Button background
+$button-background-hover: #002B36; // Button background on hover
+$button-color: white; // Button text color
 $button-hollow-border-width: 1px; // Button outline border width
 $button-border: $button-hollow-border-width solid transparent;
-$button-radius: 0; // Button border radius
+$button-radius: rem-calc(32); // Button border radius
 $button-sizes: (
 	tiny: rem-calc(10),
 	small: rem-calc(13),
-	default: rem-calc(16),
+	default: rem-calc(18),
 	large: rem-calc(20),
 ); // Button sizes (use size name as class name: "button large")
 
 // Typography
 
-$global-lineheight: 1.5; // line-height that will apply to any text that has not specified line height
+$global-lineheight: 1; // line-height that will apply to any text that has not specified line height
 $body-font-color: $text-color; // global text color $text-color comes from _vars.scss
 $body-font-family: $font; // global text font family
 $global-margin: rem-calc(16); // global margin that will applies to any text (p, ul, ol, blockquote)
@@ -81,12 +81,12 @@ $header-styles: (
 		'h6': ('font-size': 17),
 	),
 	medium: (
-		'h1': ('font-size': 48),
-		'h2': ('font-size': 44),
-		'h3': ('font-size': 40),
-		'h4': ('font-size': 36),
-		'h5': ('font-size': 32),
-		'h6': ('font-size': 24),
+		'h1': ('font-size': 98),
+		'h2': ('font-size': 79),
+		'h3': ('font-size': 67),
+		'h4': ('font-size': 45),
+		'h5': ('font-size': 40),
+		'h6': ('font-size': 25),
 	),
 	// Specify desktop heading sizes in _typography.scss
 );
@@ -98,13 +98,13 @@ $paragraph-margin-bottom: $global-margin; // Paragraph bottom margin
 
 $input-color: $body-font-color; // Input text color
 $input-placeholder-color: $medium-gray; // Input placeholder color
-$input-font-size: rem-calc(16); // Input text size
+$input-font-size: rem-calc(12); // Input text size
 $input-line-height: $global-lineheight; // Input line height
 $input-background: $white; // Input background
 $input-background-focus: $light-gray; // Input background on focus
 $input-border: 1px solid $medium-gray; // Input border
 $input-border-focus: 1px solid $dark-gray; // Input border on focus
-$input-padding: rem-calc(10 15); // Input padding
+$input-padding: rem-calc(18 20 23); // Input padding
 $select-background: $input-background; // Select background;
 $select-triangle-color: transparent;
 $form-spacing: 0;
@@ -230,7 +230,7 @@ $drilldown-arrow-size: 6px;
 // 18. Dropdown Menu
 // -----------------
 
-$dropdownmenu-arrows: false;
+$dropdownmenu-arrows: true;
 $dropdownmenu-min-width: rem-calc(208);
 $dropdownmenu-background: null;
 $dropdownmenu-submenu-background: transparent;
@@ -305,14 +305,14 @@ $responsive-embed-ratios: (
 // ---------
 
 $table-background: $white;
-$table-color-scale: 20%;
+$table-color-scale: 5%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
 $table-row-hover: darken($table-background, $table-hover-scale);
 $table-is-striped: false;
-$table-head-background: smart-scale($table-background, $table-color-scale / 4);
-$table-foot-background: smart-scale($table-background, $table-color-scale / 4);
+$table-head-background: smart-scale($table-background, $table-color-scale);
+$table-foot-background: smart-scale($table-background, $table-color-scale);
 
 // 51. Tabs
 // --------

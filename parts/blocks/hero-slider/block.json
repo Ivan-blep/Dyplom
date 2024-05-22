@@ -1,7 +1,8 @@
 {
-  "name": "acf/hero-slider",
+  "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+  "name": "hero-slider",
   "title": "Hero Slider",
-  "category": "theme",
+  "category": "custom-blocks",
   "icon": "format-gallery",
   "apiVersion": 2,
   "acf": {

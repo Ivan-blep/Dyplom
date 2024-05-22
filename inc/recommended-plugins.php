@@ -29,11 +29,11 @@ function starter_register_required_plugins() {
 			'source'   => 'http://ready-for-feedback3.com/plugins/acf-gravity-forms-field.zip', // The plugin source
 			'required' => false,
 		),*/
-		array(
+		/*array(
 			'name'     => 'Black Studio TinyMCE Widget', // The plugin name
 			'slug'     => 'black-studio-tinymce-widget', // The plugin slug (typically the folder name)
 			'required' => false,
-		),
+		),*/
 		array(
 			'name'     => 'Custom Post Type UI', // The plugin name
 			'slug'     => 'custom-post-type-ui', // The plugin slug (typically the folder name)
@@ -50,11 +50,11 @@ function starter_register_required_plugins() {
 			'source'   => 'http://ready-for-feedback3.com/plugins/gravityforms.zip', // The plugin source
 			'required' => false,
 		),
-		array(
+		/*array(
 			'name'     => 'Login LockDown', // The plugin name
 			'slug'     => 'login-lockdown', // The plugin slug (typically the folder name)
 			'required' => false,
-		),
+		),*/
 		array(
 			'name'     => 'Robin image optimizer', // The plugin name
 			'slug'     => 'robin-image-optimizer', // The plugin slug (typically the folder name)
@@ -67,7 +67,8 @@ function starter_register_required_plugins() {
 		),
 		array(
 			'name'     => 'Userback', // The plugin name
-			'slug'     => 'userback', // The plugin slug (typically the folder name)
+			'slug'     => 'userback-mod', // The plugin slug (typically the folder name)
+			'source'   => 'http://ready-for-feedback3.com/plugins/userback-mod.zip', // The plugin source
 			'required' => false,
 		),
 		array(

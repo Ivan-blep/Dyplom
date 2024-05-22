@@ -1,14 +1,12 @@
 {
   "dependencies": {
-    "foundation-sites": "^6.7.5"
+    "foundation-sites": "~6.8.1"
   },
   "scripts": {
     "bs": "browser-sync start --config bs-config.js",
-    "watch": "node-sass --watch assets/scss/custom.scss -o assets/css --source-map true --output-style compressed",
-    "build:css": "node-sass assets/scss -o assets/css --output-style compressed && postcss --use autoprefixer -r assets/css/*.css --no-map",
-    "build:fn-css": "node-sass assets/scss/foundation.scss -o assets/css --output-style compressed && postcss --use autoprefixer -r assets/css/foundation.css --no-map",
-    "build:fn": "webpack --config webpack.config.js",
-    "prefix": "postcss --use autoprefixer -r assets/css/*.css --no-map"
+    "watch": "sass -w assets/scss/custom.scss:assets/css/custom.css --source-map --style=compressed",
+    "build:css": "sass assets/scss/:assets/css/ --style=compressed && postcss --use autoprefixer -r assets/css/*.css --no-map",
+    "build:fn-js": "webpack --config webpack.config.js"
   },
   "browserslist": [
     "last 2 versions",
@@ -16,10 +14,10 @@
     "ios >= 7"
   ],
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
-    "babel-loader": "^8.2.5",
-    "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2"
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "babel-loader": "^9.1.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }

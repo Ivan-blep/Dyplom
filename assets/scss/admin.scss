@@ -1,10 +1,22 @@
 @import './inc/foundation-custom';
 @import '../../node_modules/foundation-sites/scss/foundation';
+@import "inc/gform";
 
 html {
-	font-size: 0.833334vw;
+	font-size: clamp(14px, 0.833334vw, 18px);
+	--input-fz: #{$input-font-size};
+	--input-lh: #{$input-line-height};
+	--input-pt: #{get-side($input-padding, 'top')};
+	--input-pb: #{get-side($input-padding, 'bottom')};
+	--input-pl: #{get-side($input-padding, 'left')};
+	--input-pr: #{get-side($input-padding, 'right')};
+	--input-bd: #{get-border-value($input-border, 'width')};
 }
 
+[data-type="gravityforms/form"] {
+	@include foundation-forms;
+	@include foundation-button;
+}
 
 [class*="custom-theme"], [data-type*="acf/"] {
 	box-sizing: border-box;
@@ -14,14 +26,14 @@ html {
 	*::after {
 		box-sizing: inherit;
 	}
-	
+
 	@include foundation-xy-grid-classes;
 	@include foundation-flex-classes;
 	@include foundation-typography;
 	@include foundation-accordion;
 	@include foundation-tabs;
 	@include foundation-float-classes;
-	
+
 	@import "plugins/slick";
 	@import "inc/slider";
 	@import "repeatable-blocks";
@@ -29,21 +41,26 @@ html {
 	.acf-block-preview {
 		@include foundation-forms;
 		@include foundation-button;
-		
+
 		a {
 			pointer-events: none;
 		}
-	} 
+	}
 
 	*:last-child {
 		margin-bottom: 0;
 	}
 }
 
-div.editor-styles-wrapper {
+.editor-styles-wrapper {
+	@import "blocks";
+	@import "typography";
+}
+
+html .editor-styles-wrapper {
 	width: 100%;
 	max-width: none;
-	padding: rem-calc(15);
+	padding: rem-calc(16);
 	font-family: $body-font-family;
 	box-sizing: border-box;
 
@@ -68,12 +85,25 @@ div.editor-styles-wrapper {
 	.is-style-outline > .wp-block-button__link {
 		border: $button-hollow-border-width solid currentColor;
 	}
-	
-	@import "inc/gform";
-	@import "blocks";
+
+	.acf-field-wysiwyg button, .acf-button {
+		text-transform: none;
+		color: inherit;
+		border-width: 1px;
+
+		&::before, &::after {
+			content: none;
+			display: none;
+		}
+
+		&:hover {
+			background-color: inherit;
+			color: inherit;
+		}
+	}
 }
 
-.wp-block {
+.wp-block-post-content > .wp-block {
 	width: 100%;
 	max-width: $global-width;
 	margin-right: auto;

@@ -75,3 +75,23 @@
 		}
 	}
 }
+
+.animated-element {
+	opacity: 0;
+}
+.slide-left {
+	transition: opacity 1s, transform 1s;
+	transform: translateX(-50px);
+}
+.slide-right {
+	transition: opacity 1s, transform 1s;
+	transform: translateX(50px);
+}
+.slide-up {
+	transition: opacity 1s, transform 1s;
+	transform: translateY(50px);
+}
+.visible {
+	opacity: 1;
+	transform: translateX(0);
+}

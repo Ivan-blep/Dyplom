@@ -1,45 +1,216 @@
 .footer {
-	margin-top: auto;
-	padding-top: rem-calc(32);
+	margin-top: rem-calc(99);
+	color: white;
+	font-size: rem-calc(21);
+	background-color: $dark-green;
+	padding-top: rem-calc(39);
+	padding-bottom: rem-calc(49);
+	@include breakpoint(medium down){
+		margin-top: 40px;
+	}
+	@include breakpoint(small down){
+		font-size: 15px;
+	}
+	a{
+		color: white;
+		font-size: rem-calc(21);
+		text-decoration: none;
+		@include breakpoint(small down){
+			font-size: 15px;
+		}
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+	.grid-x{
+		justify-content: space-between;
+	}
+
+	.button{
+		background-color: white;
+		color: $dark-green;
+		display: block;
+		margin: rem-calc(20) auto 0;
+		font-size: rem-calc(18);
+		width: fit-content;
+		@include breakpoint(small down){
+			font-size: 12px;
+			padding: 8px 14px;
+		}
+		&:hover{
+			background-color: $light-green;
+			text-decoration: none;
+		}
+	}
 
 	@include breakpoint(small down) {
 		text-align: center;
 	}
+	&__logo-container{
+		width: rem-calc(341);
+		padding-left: rem-calc(39);
+		@include breakpoint(medium down){
+			width: 100%;
+			padding-left: 0;
+			margin-bottom: 20px;
+		}
+	}
+	&__right-content{
+		width: rem-calc(854);
+		display: flex;
+		align-items: center;
+		@include breakpoint(medium down){
+			width: 100%;
+			flex-direction: column;
+		}
+	}
+	&__contact{
+		width: rem-calc(511);
+		padding-right: rem-calc(20);
+		@include breakpoint(medium down){
+			width: 100%;
+			padding-right: 0;
+		}
+		&--title{
+			font-size: rem-calc(30);
+			width: rem-calc(350);
+			border-bottom: rem-calc(1) solid white;
+			margin-bottom: rem-calc(32);
+			padding-bottom: rem-calc(5);
+			@include breakpoint(medium down){
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center;
+			}
+			@include breakpoint(small down){
+				font-size: 18px;
+			}
+			@include breakpoint(430px down){
+				width: calc(100% - 40px);
+			}
+		}
+		&--phone{
+			margin-bottom: rem-calc(32);
+			@include breakpoint(medium down){
+				text-align: center;
+			}
+			>a{
+				margin-left: rem-calc(10);
+			}
+		}
+		&--email{
+			@include breakpoint(medium down){
+				text-align: center;
+			}
+			margin-bottom: rem-calc(32);
+			>a{
+				margin-left: rem-calc(19);
+			}
+		}
+		&--social{
+			margin-right: rem-calc(20);
+			margin-bottom: 0;
+		}
+	}
 }
-
+.footer-menu__container{
+	flex: 1;
+}
 .footer__logo {
+	@include breakpoint(medium down){
+		display: flex;
+		justify-content: center;
+	}
 	@include breakpoint(small down) {
 		margin-bottom: rem-calc(20);
 	}
 
 	img {
-		width: rem-calc(160);
+		width: rem-calc(302);
 		height: auto;
 		object-fit: contain;
 	}
 }
 
 .footer__sp {
-	.stay-tuned {
-		justify-content: flex-end;
 
-		@include breakpoint(small down) {
-			justify-content: center;
+	a{
+		text-decoration: none!important;
+		border-radius:  50%;
+		border: rem-calc(1) solid white;
+		padding: rem-calc(10);
+		font-size: rem-calc(16);
+
+		svg{
+			width: rem-calc(20);
+			height: rem-calc(20);
+
+		}
+		&:hover{
+			background-color: white;
+			color: $dark-green;
+			svg{
+				path{
+					stroke: $dark-green;
+				}
+			}
+		}
+		&[aria-label="Instagram"]{
+			padding: rem-calc(9 10);
+		}
+		&[aria-label="Dribbble"]{
+			padding: rem-calc(10);
+		}
+		&[aria-label="LinkedIn"]{
+			padding: rem-calc(10 11);
+		}
+		&[aria-label="Pinterest"]{
+			padding: rem-calc(10 11);
+		}
+		&[aria-label="Tumblr"]{
+			padding: rem-calc(10 12.1);
 		}
 	}
+
+	.facebook{
+		padding: rem-calc(6 7 2);
+
+	}
+	display: flex;
+	align-items: center;
+	@include breakpoint(medium down){
+		justify-content: center;
+	}
+	//.stay-tuned {
+	//	@include breakpoint(small down) {
+	//		justify-content: center;
+	//	}
+	//}
+
 }
 
 .footer-menu {
-	align-items: center;
-
+	padding-left: rem-calc(20);
+	padding-top: rem-calc(20);
+	align-items: start;
+	flex-direction: column;
+	@include breakpoint(medium down){
+		align-items: center;
+		padding-left: 0;
+	}
 	@include breakpoint(small down) {
 		justify-content: center;
 		margin-bottom: rem-calc(20);
 	}
 
 	li {
+		margin-bottom: rem-calc(15);
 
 		a {
+			font-size: rem-calc(34);
+			@include breakpoint(small down){
+				font-size: 20px;
+			}
 			&.button {
 				padding: $button-padding;
 				line-height: 1;

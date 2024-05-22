@@ -231,15 +231,33 @@ function is_embed_video( $url ) {
  * @return array
  */
 function fix_wp_get_attachment_image_svg( $image, $attachment_id, $size, $icon ) {
+	$arrContextOptions = array(
+		"ssl"  => array(
+			"verify_peer"      => false,
+			"verify_peer_name" => false,
+		),
+		'http' => array(
+			'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+		),
+	);
+	$context           = stream_context_create( $arrContextOptions );
+	libxml_set_streams_context( $context );
 	if ( is_array( $image ) && preg_match( '/\.svg$/i', $image[0] ) ) {
 		if ( is_array( $size ) ) {
 			$image[1] = $size[0];
 			$image[2] = $size[1];
+		} elseif ( ( $svg_w = get_post_meta( $attachment_id, '_custom_svg_width', true ) ) && ( $svg_h = get_post_meta( $attachment_id, '_custom_svg_height', true ) ) ) {
+			$image[1] = $svg_w;
+			$image[2] = $svg_h;
 		} elseif ( ( $xml = simplexml_load_file( $image[0] ) ) !== false ) {
 			$attr     = $xml->attributes();
 			$viewbox  = explode( ' ', $attr->viewBox );
-			$image[1] = isset( $attr->width ) && preg_match( '/\d+/', $attr->width, $value ) ? (int) $value[0] : ( count( $viewbox ) == 4 ? (int) $viewbox[2] : null );
-			$image[2] = isset( $attr->height ) && preg_match( '/\d+/', $attr->height, $value ) ? (int) $value[0] : ( count( $viewbox ) == 4 ? (int) $viewbox[3] : null );
+			$svg_w    = isset( $attr->width ) && preg_match( '/\d+/', $attr->width, $value ) ? (int) $value[0] : ( count( $viewbox ) == 4 ? (int) $viewbox[2] : null );
+			$svg_h    = isset( $attr->height ) && preg_match( '/\d+/', $attr->height, $value ) ? (int) $value[0] : ( count( $viewbox ) == 4 ? (int) $viewbox[3] : null );
+			$image[1] = $svg_w;
+			$image[2] = $svg_h;
+			update_post_meta( $attachment_id, '_custom_svg_width', $svg_w );
+			update_post_meta( $attachment_id, '_custom_svg_height', $svg_h );
 		} else {
 			$image[1] = $image[2] = null;
 		}
@@ -267,7 +285,7 @@ function acf_link( $acf_link, $class = '', $atts = array(), $echo = true ) {
 			if ( $k == 'class' ) {
 				$v .= ' ' . $class;
 			}
-			$attr_str .= $k . '="' . $v . '"';
+			$attr_str .= $k . '="' . $v . '" ';
 		}
 	}
 
@@ -327,6 +345,9 @@ function get_share_link_url( $post_id = null, $network = 'facebook' ) {
 		case 'reddit':
 			$share_url = "https://reddit.com/submit?url={$post_url}&title={$post_title}";
 			break;
+		case 'email':
+         $share_url = "mailto:?subject={$post_title}&body={$post_url}";
+         break;
 
 	}
 
@@ -341,7 +362,7 @@ function get_share_link_url( $post_id = null, $network = 'facebook' ) {
  * @return string
  */
 function get_address_url( $address = null ) {
-	if( empty( $address ) ) {
+	if ( empty( $address ) ) {
 		return '';
 	}
 	$address_format = urlencode( str_replace( array( "\r", "\n", ), '', wp_strip_all_tags( $address ) ) );
@@ -463,7 +484,7 @@ function starter_section_style( $block ) {
 
 /**
  * Generate spacing styles for custom block
- * 
+ *
  * @param WP_Block_Type $block_type
  * @param array $attributes
  * @param string $css_property
@@ -509,19 +530,23 @@ function starter_wp_spacing_get_css_variable_inline_style( $block_type, $attribu
  *
  * @return string
  */
-function starter_block_attributes( $class, $block ) {
-	if ( empty( $class ) || empty( $block ) ) {
+function starter_block_attributes( $class = '', $block = [] ) {
+	if ( empty( $class ) && empty( $block ) ) {
 		return '';
 	}
 
-	$atts = [
-		'id'    => $block['anchor'] ?? '',
-		'class' => starter_section_class( $class, $block ),
-		'style' => starter_section_style( $block ),
-	];
-
+	if ( empty( $block ) ) {
+		$atts = [ 'class' => $class ];
+	} else {
+		$atts = [
+			'id'    => $block['anchor'] ?? '',
+			'class' => starter_section_class( $class, $block ),
+			'style' => starter_section_style( $block ),
+		];
+	}
+	
 	$atts_string = '';
-	foreach ( $atts as $name => $val ) {
+	foreach ( array_filter( $atts ) as $name => $val ) {
 		$atts_string .= "{$name}='{$val}' ";
 	}
 

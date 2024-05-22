@@ -96,6 +96,7 @@
 // Init class for parallax if image used as background of whole section
 .jarallax {
 	position: relative;
+	z-index: 1;
 
 	> .jarallax-img {
 		position: absolute;
@@ -103,6 +104,8 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
+		object-fit: cover;
+		z-index: -1;
 	}
 }
 
@@ -180,14 +183,14 @@
 
 .share-links {
 	display: flex;
-	margin: rem-calc(0 8);
+	flex-flow: row wrap;
+	margin: rem-calc(-4 -8);
 	padding: 0;
 	list-style: none;
 }
 
 .share-links__item {
-	margin-right: rem-calc(8);
-	margin-left: rem-calc(8);
+	margin: rem-calc(4 8);
 }
 
 .share-links__link {
@@ -196,6 +199,20 @@
 	.fab, .far, .fas {
 		display: block;
 	}
+}
+
+.share-box {
+	display: flex;
+	align-items: center;
+}
+
+.share-box__title {
+	margin-right: rem-calc(16);
+	margin-bottom: 0;
+}
+
+.share-box__links {
+	
 }
 
 /* ---------------------------------------

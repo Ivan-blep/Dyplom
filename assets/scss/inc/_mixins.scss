@@ -73,7 +73,7 @@
 
 	// Spacing between bars is calculated based on the total height
 	// of the icon and the weight of each bar
-	$spacing: ($height - ($weight * $bars)) / ($bars - 1);
+	$spacing: divide($height - ($weight * $bars), $bars - 1);
 
 	@if unit($spacing) == 'px' {
 		$spacing: floor($spacing);
@@ -175,7 +175,7 @@
 		height: rem-calc(16);
 		margin-top: rem-calc(-8);
 		margin-left: rem-calc(-8);
-		background-image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 91.4 91.4"><circle cx="45.7" cy="45.7" r="45.7"/><circle cx="45.7" cy="24.4" r="12.5" fill="#fff"/></svg>');
+		background-image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16"/><circle cx="16" cy="8" r="4" fill="#fff"/></svg>');
 		background-position: 50% 50%;
 		background-size: cover;
 		animation: spin 1s ease-in-out infinite;
@@ -186,6 +186,18 @@
 	h1, h2, h3, h4, h5, h6,
 	.h1, .h2, .h3, .h4, .h5, .h6 {
 		@content;
+	}
+}
+
+@function all-inputs() {
+	$return: text-inputs();
+	$return: append($return, 'textarea,select,body .select2-container .select2-selection', comma);
+	@return $return;
+}
+
+@mixin all-inputs() {
+	#{all-inputs()} {
+		@content
 	}
 }
 
@@ -204,10 +216,4 @@
 		}
 	}
 	@return $newList;
-}
-
-@function all-inputs(){
-	$return: text-inputs();
-	$return: append($return,'textarea,select,.ui-selectmenu-button',comma);
-	@return $return;
 }

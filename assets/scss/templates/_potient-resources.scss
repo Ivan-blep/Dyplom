@@ -1,0 +1,266 @@
+/* ---------------------------------------
+	TMPL: Patient Resources
+--------------------------------------- */
+.patient-hero{
+  position: relative;
+
+  padding-top: rem-calc(100);
+  &__bg{
+    position: absolute;
+    width: 100%;
+    top: rem-calc(-56);
+    overflow: hidden;
+    z-index: -1;
+    @include breakpoint(medium down){
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    >img{
+      max-width: 200%;
+      width: 110%;
+      transform: rotate(1deg);
+      transform: translateX(-7%);
+      @include breakpoint(medium down){
+        width: 200%;
+      }
+    }
+  }
+  &__content{
+    margin-bottom: rem-calc(20);
+    color: $dark-green;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.555;
+    text-transform: uppercase;
+    .beloved{
+      font-size: rem-calc(103);
+      text-transform: none;
+      @include breakpoint(small down){
+        font-size: 40px;
+      }
+    }
+  }
+  &__button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .button{
+      padding-left: rem-calc(35);
+      padding-right: rem-calc(35);
+    }
+  }
+}
+.asked{
+  padding-bottom: rem-calc(45);
+  margin-top: rem-calc(100);
+  position: relative;
+  padding-top: rem-calc(30);
+  //z-index: -1;
+
+  &--bg{
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: .24;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &:after{
+    top: 0;
+    opacity: 1;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: #00483E;  }
+  &:before{
+    top: 0;
+    opacity: .24;
+    content: '';
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 72, 62, 1), rgba(0, 72, 62, 1), rgba(255, 255, 255, 1));
+  }
+  .grid-container{
+    position: relative;
+    //border-top: rem-calc(1) solid white;
+    z-index: 5;
+    display: flex;
+    padding-top: rem-calc(16);
+    &:after{
+      content: '';
+      width: calc(100% - 2rem);
+      height: rem-calc(1);
+      background-color: white;
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      left: 50%;
+      @include breakpoint(medium down){
+        width: calc(100% - 40px);
+      }
+    }
+    @include breakpoint(medium down){
+      flex-direction: column;
+    }
+
+  }
+  &__title{
+    width: rem-calc(595);
+    padding-right: rem-calc(130);
+    color: white;
+    padding-top: rem-calc(20);
+    @include breakpoint(medium down){
+      width: 100%;
+    }
+    h4{
+      font-size: rem-calc(48);
+      letter-spacing: rem-calc(-2.5);
+      line-height: 1.31;
+      font-weight: 400;
+      font-family: "Poppins", "san-serif";
+      @include breakpoint(small down){
+        font-size: 25px;
+      }
+    }
+  }
+  &__container-accordion{
+    flex: 1;
+    .accordion{
+      background-color: transparent;
+      color: white;
+      line-height: 1.5;
+      a{
+        color: white;
+        line-height: 1.5;
+      }
+      .accordion-title{
+        background-color: transparent !important;
+        border: none;
+        border-bottom: rem-calc(1) solid white;
+        padding-top: rem-calc(25);
+        padding-bottom: rem-calc(15);
+        padding-left: 0;
+        padding-right: rem-calc(50);
+        &:hover{
+          opacity: .6;
+        }
+        &:before{
+          font-size: rem-calc(55);
+          transform: translateY(-50%);
+          right: rem-calc(20);
+          top: 61%;
+          @include breakpoint(medium down){
+            top: 65%;
+          }
+          @include breakpoint(small down){
+            font-size: 20px;
+            top: 69%;
+          }
+        }
+      }
+      .accordion-content{
+        background-color: transparent;
+        color: white;
+        border: none;
+        border-bottom: rem-calc(1) solid white;
+      }
+    }
+  }
+}
+
+.insurance{
+  margin-bottom: rem-calc(80);
+  margin-top: rem-calc(96);
+  @include breakpoint(medium down){
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  &__title{
+    background-color: $green;
+    padding-top: rem-calc(70);
+    padding-bottom: rem-calc(10);
+    margin-bottom: rem-calc(75);
+    @include breakpoint(small down){
+      margin-bottom: 40px;
+      padding-top: 40px;
+    }
+    h1{
+      line-height: 1;
+      letter-spacing: rem-calc(-5);
+      font-family: "Poppins", "san-serif";
+      color: white;
+      font-weight: 400;
+      @include breakpoint(small down){
+        letter-spacing: 0;
+      }
+    }
+  }
+  .tabs{
+
+    border: none;
+    //border-bottom: rem-calc(1) solid #707070;
+    display: flex;
+    flex-wrap: wrap;
+    &-title{
+      border-bottom: rem-calc(1) solid #707070;
+      @include breakpoint(medium down){
+        flex: 1;
+      }
+      &:last-child{
+        flex:1;
+      }
+      a{
+        width: fit-content;
+        transform: translateY(rem-calc(2.5));
+        font-size: rem-calc(25);
+        padding: rem-calc(10) 0;
+        margin-right: rem-calc(150);
+        font-family: 'Quicksand', 'san-serif';
+        font-weight: 600;
+        color: $text-color !important;
+        white-space: nowrap;
+        @include breakpoint(small down){
+          font-size: 18px;
+          margin-right: rem-calc(50);
+        }
+      }
+      a:hover{
+        background-color: transparent;
+        border-bottom: rem-calc(5px) solid #707070;
+      }
+    }
+    .is-active{
+      a{
+        background-color: transparent;
+        border-bottom: rem-calc(5px) solid #707070;
+      }
+    }
+
+  }
+  .tab-content{
+    display: flex;
+    align-items: center;
+    background-color: #EBEBEB;
+    margin-top: rem-calc(20);
+    padding: rem-calc(0 95 0 75);
+    line-height: 1.65;
+    min-height: rem-calc(260);
+    @include breakpoint(small down){
+      padding: 0 30px 0 25px;
+    }
+    p{
+      margin-bottom: rem-calc(30);
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
+}

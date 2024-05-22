@@ -7,7 +7,18 @@
 }
 
 .contact__map-wrap {
-	margin-top: rem-calc(48);
+	margin-bottom: rem-calc(8);
+	margin-right: rem-calc(3);
+	overflow: hidden;
+	-webkit-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.13);
+	-moz-box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.13);
+	box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.13);
+	width: rem-calc(976);
+	height: rem-calc(641);
+	.acf-map{
+		height: 100%;
+	}
+
 }
 
 .contact__map {
@@ -70,4 +81,208 @@
 			text-decoration: underline;
 		}
 	}
+}
+.contact-hero-image{
+	width: 100%;
+	height: rem-calc(589);
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	@include breakpoint(small down){
+		height: 70vw;
+	}
+	&:after{
+		content: '';
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		background: linear-gradient(to top, rgba(0, 73, 82, 0.72), rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0));
+		position: absolute;
+	}
+}
+.contact-hero{
+	margin-bottom: rem-calc(20);
+	transform: translateY(rem-calc(-90));
+	z-index: 100;
+	position: relative;
+
+	.grid-container{
+		display: flex;
+		justify-content: space-between;
+		padding: rem-calc(0 130);
+		@include breakpoint(medium down){
+			flex-wrap: wrap;
+		}
+		@include breakpoint(915px down){
+			flex-direction: column;
+			align-items: center;
+		}
+		@include breakpoint(small down){
+			padding: 0 20px;
+		}
+	}
+	&__address, &__office-hours, &__contact{
+		padding-bottom: rem-calc(40);
+		position: relative;
+		-webkit-box-shadow: 0px 5px 30px 3px rgba(0,0,0,0.15);
+		-moz-box-shadow: 0px 5px 30px 3px rgba(0,0,0,0.15);
+		box-shadow: 0px 5px 30px 3px rgba(0,0,0,0.15);
+		width: rem-calc(370);
+		min-height: rem-calc(344);
+		display: flex;
+		flex-direction: column;
+		@include breakpoint(medium down){
+			margin-bottom: 40px;
+		}
+		@include breakpoint(500px down){
+			width: 90%;
+		}
+		@include breakpoint(small down){
+			min-height: auto;
+		}
+		@include breakpoint(400px down){
+			width: 100%;
+		}
+		&--title{
+			background-color: #EBEBEB;
+			padding: rem-calc(35 0 45);
+			position: relative;
+			&:after{
+				content: '';
+				position: absolute;
+				height: rem-calc(6);
+				width: rem-calc(200);
+				transform: translateX(-50%);
+				left: 50%;
+				bottom: rem-calc(-3);
+				background-color: $light-green;
+			}
+			>h5{
+				font-size: rem-calc(48);
+				font-family: "Poppins", "san-serif";
+				font-weight: 400;
+				line-height: 1.31;
+				color: $dark-green;
+				text-align: center;
+				letter-spacing: rem-calc(-2);
+				@include breakpoint(small down){
+					font-size: 22px;
+				}
+			}
+		}
+		&--content{
+			background-color: white;
+			font-size: rem-calc(16);
+			line-height: 1.87;
+			flex: 1;
+			color: #091D3E;
+			font-family: "Poppins", "san-serif";
+			a{
+				color: #091D3E;
+			}
+			@include breakpoint(small down){
+				font-size: 14px;
+			}
+		}
+	}
+	&__address{
+		&--content{
+			address{
+				position: relative;
+				padding-left: 0;
+				>img{
+					position: absolute;
+					width: rem-calc(27);
+					height: rem-calc(33);
+					top: 0;
+					left: rem-calc(-40);
+				}
+				&:before{
+					content: '';
+				}
+			}
+			padding: rem-calc(55 80 0 92);
+		}
+	}
+	&__office-hours{
+		&--content{
+			padding: rem-calc(10 30 0 40);
+			@include breakpoint(375px down){
+				padding: 10px 20px 0;
+			}
+			&__item{
+				display: flex;
+				justify-content: space-between;
+				padding: rem-calc(5 0);
+				border-bottom: rem-calc(1) solid #D8D8D8;
+				&:last-child{
+					border-bottom: none;
+				}
+			}
+		}
+	}
+	&__contact{
+		&--content{
+			padding: rem-calc(55 30 0 25);
+			.contact-link--phone{
+				padding-bottom: rem-calc(20);
+				margin-bottom: rem-calc(20);
+				border-bottom: rem-calc(1) solid #D8D8D8;
+				&:before{
+					font-size: rem-calc(20);
+					color: $light-green;
+				}
+				&:before{
+					content: '\f095';
+					top: rem-calc(15);
+				}
+			}
+			.contact-link--email{
+				>a{
+					@include breakpoint(small down){
+						word-wrap: break-word;
+					}
+				}
+				>img{
+					width: rem-calc(24);
+					height: rem-calc(16.5);
+					position: absolute;
+					top: rem-calc(7);
+					left: 0;
+				}
+				&:before{
+					content:'';
+				}
+			}
+		}
+	}
+}
+.contact-content{
+	overflow: hidden;
+	display: flex;
+	@include breakpoint(medium down){
+		flex-direction: column;
+	}
+	.contact__map-wrap{
+		@include breakpoint(medium down){
+			width: 100%;
+		}
+	}
+	&__form{
+		padding-top: rem-calc(30);
+		width: rem-calc(745);
+		padding-left: rem-calc(77);
+		@include breakpoint(medium down){
+			width: 100%;
+			padding: 40px 20px 0;
+		}
+	}
+}
+.form-title{
+	font-size: rem-calc(33);
+	font-weight: 500;
+	font-family: "Poppins", "san-serif";
+	color: $light-green;
 }

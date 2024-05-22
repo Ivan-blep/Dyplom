@@ -1,7 +1,8 @@
 {
-  "name": "acf/acf-advanced",
+  "$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+  "name": "acf-advanced",
   "title": "ACF Advanced",
-  "category": "theme",
+  "category": "custom-blocks",
   "icon": "screenoptions",
   "apiVersion": 2,
   "acf": {

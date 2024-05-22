@@ -1,5 +1,6 @@
 .alignnone {
 	margin: 0 1em 1em 0;
+	clear: both;
 }
 
 .alignright {
@@ -17,6 +18,15 @@
 	margin-right: auto;
 	margin-bottom: 1em;
 	margin-left: auto;
+	clear: both;
+}
+
+p {
+  &:last-child {
+    & > .alignright, & > .alignleft, & > .alignnone, & > .aligncenter {
+      margin: 0;
+    }
+  }
 }
 
 @include breakpoint(small down) {
@@ -30,7 +40,7 @@
 	max-width: 100%; /* Image does not overflow the content area */
 	padding: rem-calc(4 4 10);
 	border: 1px solid #f0f0f0;
-	background: #fff;
+	background: #ffffff;
 	text-align: center;
 
 	img {
@@ -58,7 +68,7 @@
 }
 
 .gallery-item {
-	$gap: rem-calc(-zf-get-bp-val($grid-margin-gutters, 'small') / 2);
+	$gap: rem-calc(divide(-zf-get-bp-val($grid-margin-gutters, 'small'), 2));
 	display: inline-block;
 	width: 100%;
 	margin-right: $gap;
@@ -84,7 +94,7 @@
 @for $i from 2 through 9 {
 	.gallery-columns-#{$i} {
 		.gallery-item {
-			$gap: rem-calc(-zf-get-bp-val($grid-margin-gutters, 'small') / 2);
+			$gap: rem-calc(divide(-zf-get-bp-val($grid-margin-gutters, 'small'), 2));
 			max-width: calc((100% - #{$gap} * #{$i - 1}) / #{$i});
 
 			&:nth-of-type(#{$i}n+#{$i}) {
@@ -123,29 +133,53 @@ mediaelementwrapper {
 
 /* Pagination */
 
-ul.pagination {
+ul.page-numbers, .woocommerce nav.woocommerce-pagination ul {
 	@include list-unstyled;
-	margin: rem-calc(16 0);
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+	margin: rem-calc(32 0 0);
+	border: none;
 	text-align: center;
 
 	li {
-		display: inline-block;
 		margin: rem-calc(0 4);
 		padding: 0;
+		border: none;
 		line-height: 1.5;
 
-		span, a {
+		> span, > a {
 			display: block;
-			padding: 0 rem-calc(8);
+			min-width: rem-calc(32);
+			min-height: rem-calc(32);
+			line-height: rem-calc(32);
+			padding: 0 2px;
+
+			span {
+				padding: 0;
+			}
+		}
+
+		a {
+			&:hover, &:focus {
+				background-color: $light-gray;
+			}
+		}
+
+		span, a {
+			&::before {
+				font-weight: 900;
+			}
 
 			&.current {
 				display: block;
 				background: $main-color;
-				color: #fff;
+				color: #ffffff;
 			}
 		}
-		
-		> .pagination-arrow{
+
+		> .pagination-arrow {
 			&.disabled {
 				cursor: not-allowed;
 				opacity: 0.7;
@@ -181,13 +215,13 @@ ul.pagination {
 
 .comment-metadata {
 	margin-top: rem-calc(4);
-	color: #666;
+	color: #666666;
 }
 
 .comment-content {
 	margin-top: rem-calc(16);
 	padding-left: rem-calc(16);
-	border-left: 1px solid #ddd;
+	border-left: 1px solid #dddddd;
 	font-size: rem-calc(14);
 }
 
@@ -202,7 +236,7 @@ ul.pagination {
 	display: block;
 	padding: 0.33333rem 0.5rem;
 	border-radius: 0;
-	background: #777;
+	background: #777777;
 	color: #fefefe;
 	font-size: 0.8rem;
 	line-height: 1;
@@ -210,7 +244,7 @@ ul.pagination {
 
 	&:hover, &:focus {
 		background-color: $main-color;
-		color: #fff;
+		color: #ffffff;
 		text-decoration: none;
 	}
 }

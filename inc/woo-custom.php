@@ -3,6 +3,12 @@
  * TODO: Uncomment some action if you need it
  */
 
+add_filter( 'body_class', function ( $classes ) {
+	$classes[] = 'woocommerce-block-theme-has-button-styles';
+
+	return $classes;
+} );
+
 //======================================================================
 // SHOP / ARCHIVE PAGE
 //======================================================================

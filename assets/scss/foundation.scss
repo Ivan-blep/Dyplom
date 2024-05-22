@@ -14,9 +14,6 @@
 	// Global styles
 	@include foundation-global-styles;
 	@include foundation-forms;
-	.ui-selectmenu-button {
-		@extend select;
-	}
 
 	@include foundation-typography;
 
@@ -48,15 +45,8 @@
 
 	// Generic components
 	@include foundation-button;
-	.woocommerce, .woocommerce-page {
-		a.button,
-		button.button,
-		input.button,
-		#respond input#submit {
-			@include button($style: solid);
-		}
-	}
-	button, input[type='submit'], input[type='reset'], input[type='button'], .wp-block-button__link, .wp-block-file .wp-block-file__button {
+
+	button, input[type='submit'], input[type='reset'], input[type='button'], .wp-block-button__link,.wp-element-button, .wp-block-file .wp-block-file__button {
 		@include button($style: solid);
 
 		// Disabled state
@@ -73,8 +63,6 @@
 		border: $button-hollow-border-width solid currentColor;
 	}
 	
-	
-
 	//@include foundation-button-group;
 	//@include foundation-close-button;
 	//@include foundation-label;

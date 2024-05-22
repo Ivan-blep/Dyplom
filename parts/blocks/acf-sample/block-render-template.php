@@ -7,7 +7,6 @@
  */
 
 // TODO Change block CSS class `acf-custom-block` to yours for further styling
-//
 
 ?>
 <section <?php echo starter_block_attributes( 'acf-custom-block', $block ); ?>>

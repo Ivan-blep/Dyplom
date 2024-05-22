@@ -226,13 +226,14 @@ function home_slider_template() { ?>
 					cssEase: 'ease',
 					fade: true,  // Cause trouble if used slidesToShow: more than one
 					// arrows: false,
-					dots: true,
+					// dots: true,
 					infinite: true,
 					speed: 500,
 					autoplay: true,
 					autoplaySpeed: 5000,
 					slidesToShow: 1,
 					slidesToScroll: 1,
+					draggable: false, // Disable mouse dragging
 					rows: 0, // Prevent generating extra markup
 					slide: '.slick-slide', // Cause trouble with responsive settings
 				} );
